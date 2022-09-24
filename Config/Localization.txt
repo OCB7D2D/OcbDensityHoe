@@ -1,0 +1,5 @@
+Key,English
+meleeToolFarmT1IronDensityHoe,Leveling Hoe
+meleeToolFarmT1IronDensityHoeDesc,"Primary action to level terrain blocks, Secondary action to level terrain with adjacent solid cube blocks and shapes. Crouch to slightly increase affected area."
+ttDensityHoeAction,"Level adjacent terrain\nCrouch for bigger area"
+ttDensityHoeActionCrouched,"Level with 3 by 3 area\nStand for smaller area"
