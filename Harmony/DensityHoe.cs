@@ -14,18 +14,19 @@ public class DensityHoe : IModApi
 
     // Allow XML config to set solid cube shapes
     // To enable density hoe feature for blocks
-    [HarmonyPatch(typeof(BlockShapeNew))]
-    [HarmonyPatch("Init")]
-    public class BlockShapeNew_Init
-    {
-        public static void Postfix(
-            BlockShapeNew __instance,
-            Block _block)
-        {
-            _block.Properties.ParseBool("IsSolidCube",
-                ref __instance.IsSolidCube);
-        }
-    }
+    // Note: has too many side-effects if on!
+    // [HarmonyPatch(typeof(BlockShapeNew))]
+    // [HarmonyPatch("Init")]
+    // public class BlockShapeNew_Init
+    // {
+    //     public static void Postfix(
+    //         BlockShapeNew __instance,
+    //         Block _block)
+    //     {
+    //         _block.Properties.ParseBool("IsSolidCube",
+    //             ref __instance.IsSolidCube);
+    //     }
+    // }
 
     // Patch displaced cube rendering to give user feedback
     // Creates a proper wire-frame around the focused terrain
@@ -97,11 +98,16 @@ public class DensityHoe : IModApi
             ___myBounds = new Bounds(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one);
             ___multiDim = Vector3i.one; // Terrain blocks are never multi-dims?
 
+            // Note: disabled since cheasy and doesn't always work (when not dense enough)
             // We can work on focused terrain blocks or also if a block has already density.
             // Second condition allows to spread the terrain over an area of opaque blocks.
             // E.g. useful to make ground out of cement blocks, that still looks like grass.
             // Not sure if this is considered cheating; IMO it just adds aesthetics if wanted
-            if (BV.Block.shape.IsTerrain() || _world.GetDensity(clrIdx, blockPos) <= MarchingCubes.DensityTerrainHi)
+            // if ((GameUtils.IsBlockOrTerrain(_hitInfo.tag) && BV.Block.shape.IsTerrain()) || 
+            //     _world.GetDensity(clrIdx, blockPos) <= MarchingCubes.DensityTerrainHi) // to spread
+
+            if (GameUtils.IsBlockOrTerrain(_hitInfo.tag) && BV.Block.shape.IsTerrain()
+                && _world.GetDensity(clrIdx, blockPos) < 0)
             {
                 // Enable the two transforms (GameObjects) to show
                 ___transformWireframeCube?.gameObject.SetActive(true);
@@ -132,6 +138,7 @@ public class DensityHoe : IModApi
                     range = Mathf.Max(range, item.GetBlockRange());
             return range * range;
         }
+
     }
 
 }

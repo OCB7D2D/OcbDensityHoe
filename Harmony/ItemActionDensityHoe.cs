@@ -88,6 +88,8 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         Vector3i pos = hitInfo.hit.blockPos;
         BlockValue BV = hitInfo.hit.blockValue;
 
+        // Log.Out("Executing density hoe action {0}", ActionType);
+
         // Prepare for averaging also target block
         if (ActionType == DensityAction.LevelAray)
         {
@@ -128,6 +130,8 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
                 density, ActionType == DensityAction.FillDensity);
         }
 
+        // Log.Out("  gathered {0} neighbours", changes.Count);
+
         // Now average all densities for level action
         // ToDo: implement better 2x2 sampling average?
         if (ActionType == DensityAction.LevelAray)
@@ -135,6 +139,7 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
             int sum = 0;
             foreach (var change in changes)
                 sum += change.density;
+            // Log.Out("Sum before {0}", sum);
             float avg = sum / changes.Count;
             foreach (var change in changes)
             {
@@ -146,6 +151,7 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
             sum = 0;
             foreach (var change in changes)
                 sum += change.density;
+            // Log.Out("Sum after {0}", sum);
         }
 
         if (changes.Count > 0) invData.
@@ -160,24 +166,32 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
     private void GatherNeighbours(World world,
         int clrIdx, Vector3i position,
         ref List<BlockChangeInfo> changes,
-        sbyte density, bool skipTerrain)
+        sbyte density, bool isFillAction)
     {
         BlockValue BV = world.GetBlock(position);
         if (BV.isair || BV.isWater) return;
-        if (skipTerrain && BV.Block.shape.IsTerrain()) return;
-        if (!IsShapeSolidCube(BV.Block.shape)) return;
+        bool isTerrain = BV.Block.shape.IsTerrain();
+        // Fill action will ignore all terrains
+        if (isFillAction && isTerrain) return;
+        // Level action will ignore non-terrains
+        if (!isFillAction && !isTerrain) return;
+        // Check if block supports terrain leveling
+        if (!IsDensitySupported(BV.Block)) return;
         density = (sbyte)((density + MarchingCubes.DensityTerrainHi) / 2);
-        if (skipTerrain && world.GetDensity(clrIdx, position) < density) return;
+        if (isFillAction && world.GetDensity(clrIdx, position) < density) return;
         changes.Add(new BlockChangeInfo(position, BV, density));
     }
 
-    private static bool IsShapeSolidCube(BlockShape shape)
+    private static bool IsDensitySupported(Block block)
     {
+        var shape = block.shape;
         if (shape.IsSolidCube) return true;
         string name = shape.GetName();
         return name.EqualsCaseInsensitive("cube") ||
             name.EqualsCaseInsensitive("cube_glass") ||
-            name.EqualsCaseInsensitive("cube_frame");
+            name.EqualsCaseInsensitive("cube_frame") ||
+            block.Properties.GetBool("DensitySupport") /* ||
+            block.blockMaterial.FertileLevel > 15 */;
     }
 
     private bool IsHitValid(ItemInventoryData invData, out sbyte density)
@@ -194,12 +208,13 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         BlockValue BV = hitInfo.hit.blockValue;
         // Allow action for blocks with density and for all terrain
         density = invData.world.GetDensity(clrIdx, pos);
-        if (density > MarchingCubes.DensityTerrainHi &&
-            !BV.Block.shape.IsTerrain()) return false;
+        if (density >= 0 || !BV.Block.shape.IsTerrain()) return false;
+        // Check below will allow spreading density over blocks
+        // Note: disabled since cheasy and doesn't always work
+        // if (density > MarchingCubes.DensityTerrainHi &&
+        //     !BV.Block.shape.IsTerrain()) return false;
         // Check distance for this hit to be within our range
-        if (hitInfo.hit.distanceSq > BlockRange * BlockRange) return false;
-        // Hit is valid
-        return true;
+        return hitInfo.hit.distanceSq <= BlockRange * BlockRange;
     }
 
     private bool IsHitValid(ItemActionData action)
