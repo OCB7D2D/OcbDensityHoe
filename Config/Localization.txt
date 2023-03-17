@@ -1,5 +1,7 @@
 Key,English
 meleeToolFarmT1IronDensityHoe,Leveling Hoe
 meleeToolFarmT1IronDensityHoeDesc,"Primary action to level terrain blocks, Secondary action to level terrain with adjacent solid cube blocks and shapes. Crouch to slightly increase affected area."
+DensityHoeTip,"Use the Leveling Hoe to average the terrain density (primary action) and to close gaps between terrain and solid cube blocks (secondary action).\n\nLeveling Area (primary action) works by averaging the densities of adjanced terrain blocks. If you stand, it will consider the center terrain block and the four direct adjacent terrain blocks. When crouching, the corner terrain blocks will also be included to cover a 3x3 area.\n\nGap filling (secondary action) will consider adjanced solid cube blocks. Same rules for standing and crouching apply. It will then set the density of these blocks to match up with the center terrain block density."
+DensityHoeTip_title,Leveling Hoe
 ttDensityHoeAction,"Level adjacent terrain\nCrouch for bigger area"
 ttDensityHoeActionCrouched,"Level with 3 by 3 area\nStand for smaller area"

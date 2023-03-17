@@ -20,6 +20,8 @@
 			<property name="CustomIcon" value="meleeToolFarmT1IronHoe" />
 			<property name="CustomIconTint" value="248,120,160" />
 
+			<property name="PickupJournalEntry" value="DensityHoeTip"/>
+
 			<property name="Tags" value="melee,medium,tool,attFortitude,perkLivingOffTheLand,canHaveCosmetic"/>
 			<!-- It can still be used as a melee weapon -->
 			<property name="DisplayType" value="melee"/>
