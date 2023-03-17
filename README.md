@@ -25,6 +25,7 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 ### Version 0.1.1
 
 - Changed leveling algorithm
+- Added translations via DeepL
 
 ### Version 0.1.0
 
