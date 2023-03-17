@@ -76,12 +76,20 @@ public class DensityHoe : IModApi
             // Update to avoid other code from thinking it's stale
             ___lastTimeFocusTransformMoved = Time.time;
 
+            // Get density to determine wireframe height
+            // May also be used to decide if hit is valid
+            var density = _world.GetDensity(clrIdx, blockPos);
+
             // Play safe to check for existence first
             if (___transformWireframeCube != null)
             {
+                // Try to scale the wireframe block to be sure it is visible
+                // Sometimes hard to get right, might need to take the adjacent
+                // terrain blocks also into account for real good results!?
+                float scale = Mathf.Min(1.75f, Mathf.Max(1.1f, 1.25f * density / -50));
                 ___transformWireframeCube.position = blockPos - Origin.position
                     - new Vector3(0.05f, 0.25f, 0.05f); // Adjust for paddings
-                ___transformWireframeCube.localScale = new Vector3(1.1f, 1.5f, 1.1f);
+                ___transformWireframeCube.localScale = new Vector3(1.1f, scale, 1.1f);
                 ___transformWireframeCube.rotation = BV.Block.shape.GetRotation(BV);
             }
 
@@ -98,16 +106,15 @@ public class DensityHoe : IModApi
             ___myBounds = new Bounds(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one);
             ___multiDim = Vector3i.one; // Terrain blocks are never multi-dims?
 
-            // Note: disabled since cheasy and doesn't always work (when not dense enough)
+            // Note: disabled as too cheasy and doesn't always work (when not dense enough)
             // We can work on focused terrain blocks or also if a block has already density.
             // Second condition allows to spread the terrain over an area of opaque blocks.
             // E.g. useful to make ground out of cement blocks, that still looks like grass.
             // Not sure if this is considered cheating; IMO it just adds aesthetics if wanted
             // if ((GameUtils.IsBlockOrTerrain(_hitInfo.tag) && BV.Block.shape.IsTerrain()) || 
-            //     _world.GetDensity(clrIdx, blockPos) <= MarchingCubes.DensityTerrainHi) // to spread
+            //     density <= MarchingCubes.DensityTerrainHi) // to spread
 
-            if (GameUtils.IsBlockOrTerrain(_hitInfo.tag) && BV.Block.shape.IsTerrain()
-                && _world.GetDensity(clrIdx, blockPos) < 0)
+            if (GameUtils.IsBlockOrTerrain(_hitInfo.tag) && BV.Block.shape.IsTerrain() && density < 0)
             {
                 // Enable the two transforms (GameObjects) to show
                 ___transformWireframeCube?.gameObject.SetActive(true);

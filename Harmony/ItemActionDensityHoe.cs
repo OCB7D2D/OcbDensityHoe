@@ -71,7 +71,7 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
     // Return `true` if action was executed
     private bool ExecuteDensityHoe(
         ItemInventoryData invData,
-        sbyte density)
+        sbyte hitDensity)
     {
 
         var hitInfo = invData.hitInfo;
@@ -88,29 +88,22 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         Vector3i pos = hitInfo.hit.blockPos;
         BlockValue BV = hitInfo.hit.blockValue;
 
-        // Log.Out("Executing density hoe action {0}", ActionType);
-
         // Prepare for averaging also target block
         if (ActionType == DensityAction.LevelAray)
         {
-            density = MarchingCubes.DensityTerrain;
             changes.Add(new BlockChangeInfo(clrIdx, pos, BV,
                 invData.world.GetDensity(clrIdx, pos)));
         }
 
         // Add direct neighbours for potential leveling
-        GatherNeighbours(invData.world, clrIdx,
-            pos + Vector3i.forward, ref changes, density,
-            ActionType == DensityAction.FillDensity);
-        GatherNeighbours(invData.world, clrIdx,
-            pos + Vector3i.right, ref changes, density,
-            ActionType == DensityAction.FillDensity);
-        GatherNeighbours(invData.world, clrIdx,
-            pos + Vector3i.back, ref changes, density,
-            ActionType == DensityAction.FillDensity);
-        GatherNeighbours(invData.world, clrIdx,
-            pos + Vector3i.left, ref changes, density,
-            ActionType == DensityAction.FillDensity);
+        GatherNeighbours(invData.world, clrIdx, pos + Vector3i.forward,
+            ref changes, ActionType == DensityAction.FillDensity);
+        GatherNeighbours(invData.world, clrIdx, pos + Vector3i.right,
+            ref changes, ActionType == DensityAction.FillDensity);
+        GatherNeighbours(invData.world, clrIdx, pos + Vector3i.back,
+            ref changes, ActionType == DensityAction.FillDensity);
+        GatherNeighbours(invData.world, clrIdx, pos + Vector3i.left,
+            ref changes, ActionType == DensityAction.FillDensity);
 
         // Also add diagonal blocks for leveling area if crouching
         var player = invData.holdingEntity as EntityPlayerLocal;
@@ -118,19 +111,17 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         {
             GatherNeighbours(invData.world, clrIdx,
                 pos + Vector3i.forward + Vector3i.right, ref changes,
-                density, ActionType == DensityAction.FillDensity);
+                ActionType == DensityAction.FillDensity);
             GatherNeighbours(invData.world, clrIdx,
                 pos + Vector3i.back + Vector3i.right, ref changes,
-                density, ActionType == DensityAction.FillDensity);
+                ActionType == DensityAction.FillDensity);
             GatherNeighbours(invData.world, clrIdx,
                 pos + Vector3i.back + Vector3i.left, ref changes,
-                density, ActionType == DensityAction.FillDensity);
+                ActionType == DensityAction.FillDensity);
             GatherNeighbours(invData.world, clrIdx,
                 pos + Vector3i.forward + Vector3i.left, ref changes,
-                density, ActionType == DensityAction.FillDensity);
+                ActionType == DensityAction.FillDensity);
         }
-
-        // Log.Out("  gathered {0} neighbours", changes.Count);
 
         // Now average all densities for level action
         // ToDo: implement better 2x2 sampling average?
@@ -139,19 +130,25 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
             int sum = 0;
             foreach (var change in changes)
                 sum += change.density;
-            // Log.Out("Sum before {0}", sum);
             float avg = sum / changes.Count;
             foreach (var change in changes)
             {
-                change.density = (sbyte)(0.5f *
-                    (change.density + avg));
+                change.density = (sbyte)(0.35f * avg
+                    + 0.65f * change.density);
                 sum -= change.density;
             }
-            changes[0].density += (sbyte)sum;
-            sum = 0;
+            int density = changes[0].density + sum;
+            if (density < sbyte.MinValue) changes[0].density = sbyte.MinValue;
+            else if (density > sbyte.MaxValue) changes[0].density = sbyte.MaxValue;
+            else changes[0].density = (sbyte)density;
+        }
+
+        // Allow adjacent blocks to gain density to fill
+        if (ActionType == DensityAction.FillDensity)
+        {
             foreach (var change in changes)
-                sum += change.density;
-            // Log.Out("Sum after {0}", sum);
+                change.density = (sbyte)((change.density
+                    + MarchingCubes.DensityTerrainHi) / 2);
         }
 
         if (changes.Count > 0) invData.
@@ -166,7 +163,7 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
     private void GatherNeighbours(World world,
         int clrIdx, Vector3i position,
         ref List<BlockChangeInfo> changes,
-        sbyte density, bool isFillAction)
+        bool isFillAction)
     {
         BlockValue BV = world.GetBlock(position);
         if (BV.isair || BV.isWater) return;
@@ -177,8 +174,9 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         if (!isFillAction && !isTerrain) return;
         // Check if block supports terrain leveling
         if (!IsDensitySupported(BV.Block)) return;
-        density = (sbyte)((density + MarchingCubes.DensityTerrainHi) / 2);
-        if (isFillAction && world.GetDensity(clrIdx, position) < density) return;
+        sbyte density = world.GetDensity(clrIdx, position);
+        // density = (sbyte)((density + MarchingCubes.DensityTerrainHi) / 2);
+        // if (isFillAction && world.GetDensity(clrIdx, position) < density) return;
         changes.Add(new BlockChangeInfo(position, BV, density));
     }
 
