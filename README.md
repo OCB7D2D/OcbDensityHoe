@@ -12,6 +12,9 @@ Needs to be installed client and server side. And both need
 EAC (Easy Anti-Cheat) to be turned off! There is no server-side
 only version of this mod as it contains custom code.
 
+Mod is compatible with Undead Legacy OOTB, but you must rename the
+mod folder to e.g. `zOcbDensityHoe` to load it after Undead Legacy.
+
 [![GitHub CI Compile Status][4]][3]
 
 ## Download and Install
@@ -21,6 +24,10 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 - https://github.com/OCB7D2D/OcbDensityHoe/archive/master.zip (master branch)
 
 ## Changelog
+
+### Version 0.1.2
+
+- Add initial Undead Legacy compatibility
 
 ### Version 0.1.1
 

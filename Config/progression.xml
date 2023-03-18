@@ -1,9 +1,15 @@
-﻿<configs>
+<configs patcher-version="4">
 
-	<append xpath="/progression/perks/perk[@name='perkLivingOffTheLand']/effect_group/passive_effect[@name='RecipeTagUnlocked' and starts-with(@level, '1')]/@tags">,meleeToolFarmT1IronDensityHoe</append>
-
-	<append xpath="/progression/perks/perk[@name='perkLivingOffTheLand']/effect_group">
-		<passive_effect name="CraftingTier" operation="base_set" level="0,1,2,3" value="1,3,4,5" tags="perkLivingOffTheLandQuality"/>
-	</append>
+	<modif condition="UndeadLegacy_CoreModule">
+		<!-- unlocks items via schematics only -->
+	</modif>
+  <!--
+	<modelsif condition="Darkness Falls Core">
+		<include path="progression.df.xml"/>
+	</modelsif>
+  -->
+	<modelse>
+    <include path="progression.a20.xml"/>
+  </modelse>
 
 </configs>
