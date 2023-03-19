@@ -148,7 +148,8 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         {
             foreach (var change in changes)
                 change.density = (sbyte)((change.density
-                    + MarchingCubes.DensityTerrainHi) / 2);
+                    // Do not fill up fully to leave top sticking out
+                    + /* MarchingCubes.DensityTerrainHi */ -55) / 2);
         }
 
         if (changes.Count > 0) invData.

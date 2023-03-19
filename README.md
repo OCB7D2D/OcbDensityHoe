@@ -29,6 +29,7 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 
 - Adds initial Darkness Falls compatibility
 - Enables farm plots to be aligned with terrain too
+- Limits max density for blocks to not bury them under
 
 ### Version 0.1.3
 
