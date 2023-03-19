@@ -25,6 +25,11 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 
 ## Changelog
 
+### Version 0.2.0
+
+- Adds initial Darkness Falls compatibility
+- Enables farm plots to be aligned with terrain too
+
 ### Version 0.1.3
 
 - Fix translation issue with UL schematic

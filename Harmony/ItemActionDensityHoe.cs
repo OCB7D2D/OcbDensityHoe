@@ -185,9 +185,12 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         var shape = block.shape;
         if (shape.IsSolidCube) return true;
         string name = shape.GetName();
+        // Log.Out(" Check Block {0} ({1})",
+        //     block.GetBlockName(), name);
         return name.EqualsCaseInsensitive("cube") ||
             name.EqualsCaseInsensitive("cube_glass") ||
             name.EqualsCaseInsensitive("cube_frame") ||
+            name.EqualsCaseInsensitive("farm_plot") ||
             block.Properties.GetBool("DensitySupport") /* ||
             block.blockMaterial.FertileLevel > 15 */;
     }
