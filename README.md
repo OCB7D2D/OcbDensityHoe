@@ -25,6 +25,11 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 
 ## Changelog
 
+### Version 0.1.3
+
+- Fix translation issue with UL schematic
+- Fix group-filter for item to show under tools
+
 ### Version 0.1.2
 
 - Add initial Undead Legacy compatibility

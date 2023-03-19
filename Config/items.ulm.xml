@@ -1,6 +1,6 @@
 <configs patcher-version="4">
 
-	<append xpath="/items">
+  <append xpath="/items">
 
     <item name="meleeToolFarmT1IronDensityHoeBlueprint">
       <property name="Extends" value="schematicNoQualityMaster"/>
@@ -13,10 +13,11 @@
         <triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
       </effect_group>
     </item>
-    
-	</append>
+  </append>
 
   <setattribute xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/property[@name='Material']" name="value">matIron</setattribute>
   <setattribute xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/property[@name='UnlockedBy']" name="value">meleeToolFarmT1IronDensityHoeBlueprint</setattribute>
+  <append xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/property[@name='Tags']/@value">,Melee,Weapons/Tools,Items</append>
+  <append xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/property[@name='Group']/@value">,Melee,Weapons/Tools,Items</append>
 
 </configs>
