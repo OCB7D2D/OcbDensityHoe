@@ -92,10 +92,16 @@
     <Compile Include="Harmony\ItemActionDensityHoe.cs" />
     <Compile Include="Harmony\DensityHoe.cs" />
     <Compile Include="Harmony\AssemblyInfo.cs" />
+    <Compile Include="Harmony\ModXmlPatcher.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\items.a20.xml" />
+    <Content Include="Config\items.ulm.xml" />
     <Content Include="Config\loot.xml" />
+    <Content Include="Config\progression.a20.xml" />
     <Content Include="Config\progression.xml" />
+    <Content Include="Config\recipes.a20.xml" />
+    <Content Include="Config\recipes.ulm.xml" />
     <Content Include="Config\traders.xml" />
     <Content Include="Config\recipes.xml" />
     <Content Include="Config\Localization.txt" />
