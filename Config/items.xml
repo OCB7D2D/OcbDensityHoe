@@ -1,18 +1,23 @@
 <configs patcher-version="4">
 
   <!-- 	<setattribute xpath="/items/item[@name='meleeToolFarmT1IronHoe']/property[@name='CreativeMode']" name="value">Player</setattribute> -->
-  
-	<modif condition="UndeadLegacy_CoreModule">
+
+  <modif condition="UndeadLegacy_CoreModule">
     <include path="items.a20.xml"/>
     <include path="items.ulm.xml"/>
-	</modif>
-  <!--
-	<modelsif condition="Darkness Falls Core">
-		<include path="items.a20.xml"/>
-		<include path="items.df.xml"/>
-	</modelsif>
-  -->
-	<modelse>
+  </modif>
+  <modelsif condition="Darkness Falls Core">
+    <!-- unlock item via iron tool schematics -->
+    <append xpath="/items/item[@name='meleeToolIronSetSchematic']/effect_group">
+      <!-- Enable Iron Set Schematics to Unlock the Density Hoe Recipe -->
+      <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar"
+                cvar="meleeToolFarmT1IronDensityHoe" operation="set" value="1"/>
+    </append>
+    <!-- include the main item -->
+    <include path="items.a20.xml"/>
+  </modelsif>
+  <modelse>
+    <!-- unlock item via iron tool schematics -->
     <append xpath="/items/item[@name='meleeToolIronSetSchematic']/effect_group">
       <!-- Enable Iron Set Schematics to Unlock the Density Hoe Recipe -->
       <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar"

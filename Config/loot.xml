@@ -1,9 +1,9 @@
 ﻿<configs patcher-version="4">
 
   <append xpath="/lootcontainers/lootgroup[item[@name='meleeToolShovelT1IronShovel']]">
-	
-		<item name="meleeToolFarmT1IronDensityHoe"/>
 
-	</append>
+    <item name="meleeToolFarmT1IronDensityHoe"/>
+
+  </append>
 
 </configs>

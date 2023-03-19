@@ -1,14 +1,12 @@
 <configs patcher-version="4">
 
-	<modif condition="UndeadLegacy_CoreModule">
-		<!-- unlocks items via schematics only -->
-	</modif>
-  <!--
-	<modelsif condition="Darkness Falls Core">
-		<include path="progression.df.xml"/>
-	</modelsif>
-  -->
-	<modelse>
+  <modif condition="UndeadLegacy_CoreModule">
+    <!-- unlocks items via schematics only -->
+  </modif>
+  <modelsif condition="Darkness Falls Core">
+    <include path="progression.a20.xml"/>
+  </modelsif>
+  <modelse>
     <include path="progression.a20.xml"/>
   </modelse>
 

@@ -3,16 +3,15 @@
   <modif condition="UndeadLegacy_CoreModule">
     <!-- <include path="traders.ulm.xml"/> -->
   </modif>
-  <!--
-	<modelsif condition="Darkness Falls Core">
-		<include path="traders.df.xml"/>
-	</modelsif>
-  -->
+  <modelsif condition="Darkness Falls Core">
+    <append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
+      <item name="meleeToolFarmT1IronDensityHoe" quality="1,4"/>
+    </append>
+  </modelsif>
   <modelse>
     <append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
-		  <item name="meleeToolFarmT1IronDensityHoe" quality="1,4"/>
-	  </append>
+      <item name="meleeToolFarmT1IronDensityHoe" quality="1,4"/>
+    </append>
   </modelse>
-
 
 </configs>
