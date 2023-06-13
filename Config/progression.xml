@@ -7,7 +7,7 @@
     <include path="progression.a20.xml"/>
   </modelsif>
   <modelse>
-    <include path="progression.a20.xml"/>
+    <include path="progression.a21.xml"/>
   </modelse>
 
 </configs>

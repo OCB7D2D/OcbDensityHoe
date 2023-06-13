@@ -17,14 +17,8 @@
     <include path="items.a20.xml"/>
   </modelsif>
   <modelse>
-    <!-- unlock item via iron tool schematics -->
-    <append xpath="/items/item[@name='meleeToolIronSetSchematic']/effect_group">
-      <!-- Enable Iron Set Schematics to Unlock the Density Hoe Recipe -->
-      <triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar"
-                cvar="meleeToolFarmT1IronDensityHoe" operation="set" value="1"/>
-    </append>
     <!-- include the main item -->
-    <include path="items.a20.xml"/>
+    <include path="items.a21.xml"/>
   </modelse>
 
 </configs>
