@@ -3,7 +3,7 @@
   <append xpath="/recipes">
 
     <recipe name="meleeToolFarmT1IronDensityHoe" count="1"
-        tags="learnable,workbenchCrafting">
+        tags="learnable,workbenchCrafting" craft_time="1">
       <ingredient name="resourceForgedIron" count="16"/>
       <ingredient name="resourceWood" count="10"/>
       <ingredient name="resourceLeather" count="2"/>
