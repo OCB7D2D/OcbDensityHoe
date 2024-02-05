@@ -3,9 +3,9 @@
   <modif condition="UndeadLegacy_CoreModule">
     <!-- <include path="traders.ulm.xml"/> -->
   </modif>
-  <modelsif condition="Darkness Falls Core">
+  <modelsif condition="DarknessFallsCore">
     <append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
-      <item name="meleeToolFarmT1IronDensityHoe" quality="1,4"/>
+      <item name="meleeToolFarmT1IronDensityHoe" quality="20,40"/>
     </append>
   </modelsif>
   <modelse>

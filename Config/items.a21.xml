@@ -1,4 +1,4 @@
-﻿<configs patcher-version="4">
+﻿<configs>
 
   <append xpath="/items">
 
@@ -11,7 +11,7 @@
 
       <property name="PickupJournalEntry" value="DensityHoeTip"/>
 
-      <property name="Tags" value="melee,medium,tool,sideAttachments,repairTool,attStrength,perkMiner69r,canHaveCosmetic,noMods,repairingSkill"/>
+      <property name="Tags" value="melee,medium,tool,repairTool,attStrength,perkMiner69r,canHaveCosmetic,repairingSkill"/>
       <!-- It can still be used as a melee weapon -->
       <property name="DisplayType" value="melee"/>
       <!-- We re-use an old model that vanilla had used for the farming hoe -->
@@ -83,36 +83,28 @@
         <property name="SwingAngle" value="160"/>
       </property>
 
-      <!-- Pretty much copied 1to1 from vanilla -->
+      <!-- Pretty much copied 1to1 from meleeToolShovelT1IronShovel -->
       <effect_group name="meleeToolFarmT1IronDensityHoe">
-
+        <passive_effect name="AttacksPerMinute" operation="base_set" value="50" tags="perkMiner69r"/>
         <passive_effect name="StaminaLoss" operation="base_set" value="16.1" tags="primary"/>
         <!-- secondary action is just a different action and not really a "power attack" -->
         <passive_effect name="StaminaLoss" operation="base_set" value="16.1" tags="secondary"/>
-
-        <passive_effect name="EntityDamage" operation="base_set" value="13.2" tags="perkLivingOffTheLand"/>
-        <passive_effect name="BlockDamage" operation="base_set" value="26" tags="perkLivingOffTheLand"/>
-        <passive_effect name="AttacksPerMinute" operation="base_set" value="49" tags="perkLivingOffTheLand"/>
-        <passive_effect name="DegradationMax" operation="base_set" value="196,668" tier="1,6" tags="perkLivingOffTheLand"/>
-        <passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkLivingOffTheLand"/>
-        <passive_effect name="MaxRange" operation="base_set" value="2.6" tags="perkLivingOffTheLand"/>
-        <passive_effect name="BlockRange" operation="base_set" value="3.5" tags="perkLivingOffTheLand"/>
-
-        <passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+        <passive_effect name="DegradationMax" operation="base_set" value="200,650" tier="1,6" tags="perkMiner69r"/>
+        <passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkMiner69r"/>
+        <passive_effect name="MaxRange" operation="base_set" value="2.6" tags="perkMiner69r"/>
+        <passive_effect name="BlockRange" operation="base_set" value="3.5" tags="perkMiner69r"/>
+        <passive_effect name="ModSlots" operation="base_set" value="2,2,2,3,3,4" tier="1,2,3,4,5,6"/>
         <passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
         <passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
-
-        <!-- Entity modifiers depend on perk miner 69er as all other tools from the iron set -->
-        <!-- Not sure it makes much sense, but living off the land perk progresses faster -->
-        <!-- Therefore this is a safe bet, since same as vanilla, as our perk has only 3 levels -->
-        <passive_effect name="EntityDamage" operation="perc_add" value="-.15,.15" tags="perkMiner69r"/>
+        <passive_effect name="EntityDamage" operation="base_set" value="13.2" tags="perkMiner69r"/>
+        <passive_effect name="EntityDamage" operation="perc_add" value="-.04,.04" tags="perkMiner69r"/>
         <passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkMiner69r"/>
-        <passive_effect name="BlockDamage" operation="perc_add" value="-.15,.15" tags="perkMiner69r"/>
+        <passive_effect name="BlockDamage" operation="base_set" value="26" tags="perkMiner69r"/>
+        <passive_effect name="BlockDamage" operation="perc_add" value="-.04,.04" tags="perkMiner69r"/>
         <passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkMiner69r"/>
-
-        <passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="wood"/>
-        <passive_effect name="DamageModifier" operation="perc_set" value="-.9" tags="stone"/>
-        <passive_effect name="DamageModifier" operation="perc_set" value="-.9" tags="metal"/>
+        <passive_effect name="DamageModifier" operation="perc_add" value="-.7" tags="wood"/>
+        <passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="stone"/>
+        <passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="metal"/>
       </effect_group>
 
       <property name="Group" value="Tools/Traps"/>

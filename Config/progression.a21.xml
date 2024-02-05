@@ -1,4 +1,4 @@
-﻿<configs patcher-version="4">
+﻿<configs>
 
   <insertafter xpath="/progression/crafting_skills/crafting_skill[@name='craftingRepairTools']/display_entry[@item='meleeToolRepairT1ClawHammer']">
     <display_entry item="meleeToolFarmT1IronDensityHoe" unlock_level="10,15,20,25,30" />

@@ -25,6 +25,11 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 
 ## Changelog
 
+### Version 0.3.1
+
+- First Darkness Falls A21 compatibility
+- Fixes and improves some item stats
+
 ### Version 0.3.0
 
 - Update compatibility for 7D2D A21.0(b313)

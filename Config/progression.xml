@@ -3,8 +3,8 @@
   <modif condition="UndeadLegacy_CoreModule">
     <!-- unlocks items via schematics only -->
   </modif>
-  <modelsif condition="Darkness Falls Core">
-    <include path="progression.a20.xml"/>
+  <modelsif condition="DarknessFallsCore">
+    <include path="progression.a21.df.xml"/>
   </modelsif>
   <modelse>
     <include path="progression.a21.xml"/>

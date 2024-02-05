@@ -1,4 +1,4 @@
-﻿<configs patcher-version="4">
+﻿<configs>
 
   <append xpath="/progression/perks/perk[@name='perkLivingOffTheLand']/effect_group/passive_effect[@name='RecipeTagUnlocked' and starts-with(@level, '1')]/@tags">,meleeToolFarmT1IronDensityHoe</append>
 
