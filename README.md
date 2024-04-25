@@ -17,6 +17,9 @@ mod folder to e.g. `zOcbDensityHoe` to load it after Undead Legacy.
 
 [![GitHub CI Compile Status][4]][3]
 
+Model is from Black-Lio via CGTrader (Royalty Free No Ai License):  
+https://www.cgtrader.com/free-3d-models/industrial/tool/farm-tools-pack
+
 ## Download and Install
 
 Simply [download here from GitHub][2] and put into your A20 Mods folder:
@@ -24,6 +27,11 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 - https://github.com/OCB7D2D/OcbDensityHoe/archive/master.zip (master branch)
 
 ## Changelog
+
+### Version 0.4.0
+
+- Add custom hoe item model
+- Commit config from DF beta
 
 ### Version 0.3.1
 
