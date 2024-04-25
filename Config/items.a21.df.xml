@@ -1,6 +1,6 @@
 ﻿<configs>
 
-  <setattribute xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/property[@name='UnlockedBy']" name="value">perkLivingOffTheLand,perkBasicFarming</setattribute>
+  <setattribute xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/property[@name='UnlockedBy']" name="value">attClassLaborer</setattribute>
   <setattribute xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/effect_group/passive_effect[@tier='1,6']" name="tier">1,80</setattribute>
   <setattribute xpath="/items/item[@name='meleeToolFarmT1IronDensityHoe']/effect_group/passive_effect[@tier='2,6']" name="tier">2,80</setattribute>
 

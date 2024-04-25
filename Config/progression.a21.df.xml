@@ -1,8 +1,5 @@
 ﻿<configs>
 
-  <append xpath="/progression/perks/perk[@name='perkBasicFarming']/effect_group/passive_effect[@name='RecipeTagUnlocked' and starts-with(@level, '1')]/@tags">,meleeToolFarmT1IronDensityHoe</append>
-  <append xpath="/progression/perks/perk[@name='perkLivingOffTheLand']/effect_group/passive_effect[@name='RecipeTagUnlocked' and starts-with(@level, '1')]/@tags">,meleeToolFarmT1IronDensityHoe</append>
-  <append xpath="/progression/attributes/attribute/effect_group/passive_effect[contains(@tags,'meleeToolShovelT0StoneShovel')]/@tags">,meleeToolFarmT1IronDensityHoe</append>
-  <append xpath="/progression/perks/perk/effect_group/passive_effect[contains(@tags,'meleeToolShovelT0StoneShovel')]/@tags">,meleeToolFarmT1IronDensityHoe</append>
+  <append xpath="/progression/attributes/attribute[@name='attClassLaborer']/effect_group/passive_effect[@name='RecipeTagUnlocked' and starts-with(@level, '2')]/@tags">,meleeToolFarmT1IronDensityHoe</append>
 
 </configs>

@@ -7,7 +7,7 @@
     <!-- With two custom coded actions -->
     <item name="meleeToolFarmT1IronDensityHoe">
 
-      <property name="CustomIconTint" value="248,120,160" />
+      <!-- <property name="CustomIconTint" value="255,255,255" /> -->
 
       <property name="PickupJournalEntry" value="DensityHoeTip"/>
 
@@ -15,7 +15,7 @@
       <!-- It can still be used as a melee weapon -->
       <property name="DisplayType" value="melee"/>
       <!-- We re-use an old model that vanilla had used for the farming hoe -->
-      <property name="Meshfile" value="@:Other/Items/Tools/hoe_ironPrefab.prefab"/>
+      <property name="Meshfile" value="#@modfolder:Resources/OcbDensityHoe.unity3d?OcbHoePrefab"/>
       <!-- Luckily all is neatly setup already -->
       <property name="HoldType" value="17"/>
 
