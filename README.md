@@ -1,4 +1,4 @@
-# OCB Density Hoe Mod - 7 Days to Die (A21) Addon
+# OCB Density Hoe Mod - 7 Days to Die (V1.0 exp) Addon
 
 Harmony MOD (EAC needs to be off) that adds a Farming Hoe for
 terrain leveling. Beside the obvious use case, it has an
@@ -22,11 +22,15 @@ https://www.cgtrader.com/free-3d-models/industrial/tool/farm-tools-pack
 
 ## Download and Install
 
-Simply [download here from GitHub][2] and put into your A20 Mods folder:
+Simply [download here from GitHub][2] and put into your Mods folder:
 
 - https://github.com/OCB7D2D/OcbDensityHoe/archive/master.zip (master branch)
 
 ## Changelog
+
+### Version 0.5.0
+
+- First compatibility with V1.0 (exp)
 
 ### Version 0.4.0
 
@@ -66,10 +70,6 @@ Simply [download here from GitHub][2] and put into your A20 Mods folder:
 ### Version 0.1.0
 
 - Initial version
-
-## Compatibility
-
-I've developed and tested this Mod against version a20.6(b9).
 
 [1]: https://github.com/OCB7D2D/OcbDensityHoe
 [2]: https://github.com/OCB7D2D/OcbDensityHoe/releases

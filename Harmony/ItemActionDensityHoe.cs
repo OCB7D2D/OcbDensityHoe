@@ -24,7 +24,7 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
         base.ReadFrom(_props);
     }
 
-    protected override void hitTarget(
+    public override void hitTarget(
         ItemActionData action,
         WorldRayHitInfo hitInfo,
         bool isGrazingHit)
@@ -41,10 +41,10 @@ public class ItemActionDensityHoe : ItemActionDynamicMelee
     public override ItemClass.EnumCrosshairType GetCrosshairType(ItemActionData action) =>
         IsHitValid(action) ? ItemClass.EnumCrosshairType.Plus : base.GetCrosshairType(action);
 
-    protected override bool isShowOverlay(ItemActionData action) =>
+    public override bool isShowOverlay(ItemActionData action) =>
         IsHitValid(action) || base.isShowOverlay(action);
 
-    protected override void getOverlayData(
+    public override void getOverlayData(
         ItemActionData action,
         out float _perc,
         out string _text)
