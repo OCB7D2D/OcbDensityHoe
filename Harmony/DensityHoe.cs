@@ -46,7 +46,7 @@ public class DensityHoe : IModApi
             ref EntityAlive _player,
             ref WorldRayHitInfo _hitInfo,
             RenderDisplacedCube __instance,
-            ref Bounds ___myBounds,
+            ref Bounds ___localPos,
             ref Vector3 ___multiDim,
             ref float ___lastTimeFocusTransformMoved,
             ref Transform ___transformFocusCubePrefab,
@@ -103,7 +103,7 @@ public class DensityHoe : IModApi
 
             // Update some states, which are static for our use case
             // We only target terrain blocks, so block size is fixed
-            ___myBounds = new Bounds(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one);
+            ___localPos = new Bounds(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one);
             ___multiDim = Vector3i.one; // Terrain blocks are never multi-dims?
 
             // Note: disabled as too cheasy and doesn't always work (when not dense enough)

@@ -1,7 +1,7 @@
 ﻿<configs patcher-version="4">
 
   <modif condition="UndeadLegacy_CoreModule">
-    <!-- <include path="traders.ulm.xml"/> -->
+    <!-- <modinc path="traders.ulm.xml"/> -->
   </modif>
   <modelsif condition="DarknessFallsCore">
     <append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
