@@ -1,4 +1,4 @@
-<configs patcher-version="4">
+<configs patcher-version="6">
 
   <modif condition="UndeadLegacy_CoreModule">
     <!-- unlocks items via schematics only -->
