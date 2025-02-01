@@ -12,6 +12,10 @@
     <modinc path="items.a21.xml"/>
     <modinc path="items.a21.df.xml"/>
   </modelsif>
+  <modelsif condition="Afterlife">
+    <modinc path="items.a21.xml"/>
+    <modinc path="items.v1.al.xml"/>
+  </modelsif>
   <modelse>
     <!-- include the main item -->
     <modinc path="items.a21.xml"/>

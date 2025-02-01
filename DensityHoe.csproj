@@ -92,18 +92,22 @@
     <Compile Include="Harmony\ItemActionDensityHoe.cs" />
     <Compile Include="Harmony\DensityHoe.cs" />
     <Compile Include="Harmony\AssemblyInfo.cs" />
+    <Compile Include="Harmony\LoadOrder.cs" />
     <Compile Include="Harmony\ModXmlPatcher.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\items.v1.al.xml" />
     <Content Include="Config\items.a21.df.xml" />
     <Content Include="Config\items.a21.xml" />
     <Content Include="Config\items.a20.xml" />
     <Content Include="Config\items.a20.ulm.xml" />
     <Content Include="Config\loot.xml" />
+    <Content Include="Config\progression.v1.al.xml" />
     <Content Include="Config\progression.a21.df.xml" />
     <Content Include="Config\progression.a21.xml" />
     <Content Include="Config\progression.a20.xml" />
     <Content Include="Config\progression.xml" />
+    <Content Include="Config\recipes.v1.al.xml" />
     <Content Include="Config\recipes.a21.df.xml" />
     <Content Include="Config\recipes.a21.xml" />
     <Content Include="Config\recipes.a20.xml" />

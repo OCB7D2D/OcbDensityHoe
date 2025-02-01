@@ -30,6 +30,10 @@ Only clone or download the repo if you know what you do!
 
 ## Changelog
 
+### Version 0.5.2
+
+- Add Afterlife compatibility
+
 ### Version 0.5.1
 
 - Fix XML-Patcher for V1 compatibility
