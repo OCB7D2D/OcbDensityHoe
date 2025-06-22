@@ -98,7 +98,7 @@ public class DensityHoe : IModApi
             if (___transformFocusCubePrefab != null)
             {
                 ___transformFocusCubePrefab.localPosition = new Vector3(0.5f, 0.5f, 0.5f);
-                ___transformFocusCubePrefab.localScale = new Vector3(2.54f, 2.54f, 2.54f);
+                ___transformFocusCubePrefab.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 ___transformFocusCubePrefab.parent = ___transformWireframeCube;
             }
 
