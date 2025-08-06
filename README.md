@@ -1,4 +1,4 @@
-# OCB Density Hoe Mod - 7 Days to Die (V2.0) Addon
+# OCB Density Hoe Mod - 7 Days to Die (V2.1) Addon
 
 Harmony MOD (EAC needs to be off) that adds a Farming Hoe for
 terrain leveling. Beside the obvious use case, it has an
