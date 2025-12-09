@@ -9,8 +9,11 @@
   <modelsif condition="Afterlife">
     <modinc path="progression.v1.al.xml"/>
   </modelsif>
+  <modelsif condition="TheAsylumCore">
+    <modinc path="progression.v2.ay.xml"/>
+  </modelsif>
   <modelse>
-    <modinc path="progression.a21.xml"/>
+    <modinc path="progression.v2.xml"/>
   </modelse>
 
 </configs>

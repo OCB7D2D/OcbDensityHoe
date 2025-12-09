@@ -9,8 +9,13 @@
   <modelsif condition="Afterlife">
     <modinc path="recipes.v1.al.xml"/>
   </modelsif>
+  <modelsif condition="TheAsylumCore">
+    <modinc path="recipes.v2.xml"/>
+  </modelsif>
   <modelse>
     <modinc path="recipes.a21.xml"/>
+    <!-- ToDo: Needs to be tested first -->
+    <!-- <modinc path="recipes.v2.xml"/> -->
   </modelse>
 
 </configs>

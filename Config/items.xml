@@ -16,6 +16,10 @@
     <modinc path="items.a21.xml"/>
     <modinc path="items.v1.al.xml"/>
   </modelsif>
+  <modelsif condition="TheAsylumCore">
+    <modinc path="items.a21.xml"/>
+    <modinc path="items.v2.ay.xml"/>
+  </modelsif>
   <modelse>
     <!-- include the main item -->
     <modinc path="items.a21.xml"/>

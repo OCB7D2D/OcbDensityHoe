@@ -1,0 +1,22 @@
+﻿<configs>
+
+  <append xpath="/recipes">
+
+    <recipe name="meleeToolFarmT1IronDensityHoe" count="1"
+        tags="learnable,perkMiner69r,craftingHarvestingTools,packMuleCrafting">
+      <ingredient name="resourceForgedIron" count="10"/>
+      <ingredient name="resourceWood" count="8"/>
+      <ingredient name="resourceLeather" count="4"/>
+      <ingredient name="resourceDuctTape" count="4"/>
+      <ingredient name="resourceLegendaryParts" count="0" />
+      <effect_group>
+        <passive_effect name="CraftingIngredientCount" level="2,6" operation="perc_add"
+          value=".5,2.5" tags="resourceForgedIron,resourceWood,resourceLeather,resourceDuctTape" />
+        <passive_effect name="CraftingIngredientCount" level="6" operation="base_add"
+          value="1" tags="resourceLegendaryParts" />
+      </effect_group>
+    </recipe>
+
+  </append>
+
+</configs>

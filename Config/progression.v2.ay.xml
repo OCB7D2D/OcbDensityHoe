@@ -1,0 +1,12 @@
+﻿<configs>
+
+  <insertafter xpath="/progression/crafting_skills/crafting_skill[@name='craftingRepairTools']/display_entry[@item='meleeToolRepairT1ClawHammer']">
+    <display_entry item="meleeToolFarmT1IronDensityHoe" unlock_level="10,17,24,31,38,45" />
+  </insertafter>
+
+  <append xpath="/progression/crafting_skills/crafting_skill[@name='craftingRepairTools']/effect_group">
+    <passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,60" value="1" tags="meleeToolFarmT1IronDensityHoe"/>
+    <passive_effect name="CraftingTier" operation="base_add" level="17,24,31,38,45,60" value="1,2,3,4,5,5" tags="meleeToolFarmT1IronDensityHoe"/>
+  </append>
+
+</configs>
